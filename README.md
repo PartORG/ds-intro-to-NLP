@@ -1,68 +1,53 @@
 # Intro to NLP
 
-In this repo, we will explore various topics related to Natural Language Processing (NLP), including text classification, zero-shot learning, transformer pipeline models, and embedding creation. This project is designed for individuals looking to gain a comprehensive understanding of NLP techniques using popular libraries such as TensorFlow, PyTorch, and Hugging Face's Transformers.
-
-## Table of Contents
-
-- [Features](#features)
-- [How It Works](#how-it-works)
-- [Technology Stack](#technology-stack)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Quick Start](#quick-start)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Development](#development)
-- [Testing](#testing)
-- [Limitations](#limitations)
-- [License](#license)
+In this repo, we will explore various topics related to Natural Language Processing (NLP), providing hands-on tutorials through Jupyter Notebooks. Each notebook builds upon the previous one, starting with basic text processing and moving through advanced models like Transformers for zero-shot learning.
 
 ## Features
 
-### Text Classification
-- **Spam Classifier**: Train a model to classify text as spam or not spam.
-- **Zero Shot Learning**: Use pre-trained models for tasks without explicit training data.
+### Comprehensive Tutorials
+- **Spam Classifier**: Basic text processing and model training.
+- **Zero Shot Learning**: Using pretrained networks from the Transformers library to predict spam.
+- **Transformer Pipeline Models**: Exploring different models suitable for various NLP tasks.
+- **Create Embeddings**: Understanding how embeddings are created for neural network models.
 
-### Transformer Pipeline Models
-- **Transformers Zero Shot Pipeline**: Explore different transformer-based models for various NLP tasks.
-
-### Embedding Creation
-- **Create Embeddings**: Learn how to create embeddings for neural network models using TensorFlow and Hugging Face's Transformers.
+### Continuous Integration & Delivery
+- Automated workflows for testing and deployment, ensuring that each notebook functions as expected.
 
 ## How It Works
 
-This project is structured around a series of Jupyter notebooks that guide you through the process of building and deploying NLP models. Each notebook focuses on a specific aspect of NLP, from basic text processing to advanced transformer-based models.
+The repository is structured around a series of Jupyter Notebooks designed to introduce users to various aspects of NLP. Each notebook builds upon the previous one, starting with basic text processing and moving through advanced models like Transformers for zero-shot learning. The tutorials are intended to be completed in pairs, following a specific order.
 
 ## Technology Stack
 
 | Technology | Purpose |
 |------------|---------|
-| TensorFlow | Core library for machine learning and deep learning. |
-| PyTorch | Another popular deep learning framework. |
-| Hugging Face Transformers | Pre-trained models and tools for natural language understanding. |
-| Scikit-learn | Machine learning library for data mining and data analysis. |
-| Pandas | Data manipulation and analysis library. |
-| Seaborn | Statistical data visualization library based on Matplotlib. |
-| Statsmodels | Statistical modeling and testing library. |
-| JupyterLab | Interactive development environment for notebooks, code, and data. |
-| Pydot | Python interface to Graphviz's Dot language. |
-| NLTK | Natural Language Toolkit for text processing. |
-| SentencePiece | Subword tokenization library. |
-| IPyWidgets | Interactive widgets for Jupyter notebooks. |
-| Testbook | Library for testing Jupyter notebooks. |
-| HDF5 | Hierarchical Data Format for storing and managing large datasets. |
+| **TensorFlow** | Core library for building and training machine learning models. |
+| **TensorFlow Hub** | Pretrained models and modules that can be easily integrated into TensorFlow applications. |
+| **Scikit-learn** | Simple and efficient tools for data mining and data analysis, built on NumPy, SciPy, and matplotlib. |
+| **Pandas** | Data structures and operations for manipulating numerical tables and time series. |
+| **Seaborn** | A Python data visualization library based on Matplotlib that provides a high-level interface for drawing attractive statistical graphics. |
+| **Statsmodels** | Provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests, and statistical data exploration. |
+| **JupyterLab** | An open-source web-based interactive development environment for Jupyter notebooks, code, and data. |
+| **Pydot** | A Python interface to Graphviz’s Dot language. |
+| **NLTK** | Natural Language Toolkit: a leading platform for building Python programs to work with human language data. |
+| **SentencePiece** | A subword tokenizer and detokenizer. |
+| **Transformers** | Hugging Face's library of pre-trained models, optimized for inference and training on various NLP tasks. |
+| **IPyWidgets** | Interactive widgets for Jupyter notebooks. |
+| **Testbook** | A tool to test Jupyter Notebooks. |
+| **HDF5** | Hierarchical Data Format version 5, a file format designed to store large amounts of data and allows efficient access to that data. |
 
 ## Requirements
 
-- Python 3.11
+To run the tutorials in this repository, you will need:
+
+- Python 3.11.3
+- JupyterLab
 - TensorFlow 2.16.2
-- TensorFlow-Hub 0.16.1
+- TensorFlow Hub 0.16.1
 - Scikit-learn 1.5.1
 - Pandas 2.2.2
 - Seaborn 0.13.2
 - Statsmodels 0.14.2
-- JupyterLab 4.2.3
 - Pydot 2.0.0
 - NLTK 3.8.1
 - SentencePiece 0.1.99
@@ -77,13 +62,26 @@ To set up your environment, follow these steps:
 
 ### macOS
 
+#### Step 1: Install Rust and HDF5
+
 ```bash
-# Step 1: Install rustup and hdf5
 brew install rustup
 rustup-init -y
+# Choose the standard installation (press 1)
 brew install hdf5
+```
 
-# Step 2: Set up virtual environment and install packages
+Restart your terminal and check the Rust version:
+
+```bash
+rustup --version
+```
+
+#### Step 2: Set up the virtual environment and install dependencies
+
+For macOS with **silicon** chips:
+
+```bash
 pyenv local 3.11.3
 python -m venv .venv
 source .venv/bin/activate
@@ -91,62 +89,75 @@ pip install --upgrade pip
 pip install -r requirements_silicon.txt
 ```
 
-### WindowsOS
+For macOS with **intel** chips:
 
-#### PowerShell CLI
-
-```powershell
-# Step 1: Install rustup and hdf5
-Invoke-WebRequest -Uri "https://www.rust-lang.org/install" -OutFile "rustup-init.exe"
-.\rustup-init.exe
-choco upgrade chocolatey
-choco install hdf5
-
-# Step 2: Set up virtual environment and install packages
+```bash
 pyenv local 3.11.3
 python -m venv .venv
-.venv\Scripts\Activate.ps1
+source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-#### Git-bash CLI
+### WindowsOS
+
+#### Step 1: Install Rust and HDF5
+
+1. Visit the official Rust website: [https://www.rust-lang.org/tools/install](https://www.rust-lang.org/tools/install).
+2. Download and run the `rustup-init.exe` installer.
+3. Follow the on-screen instructions and choose the default options for a standard installation.
+
+Then, install HDF5:
 
 ```bash
-# Step 1: Install rustup and hdf5
-curl https://sh.rustup.rs -sSf | sh
 choco upgrade chocolatey
 choco install hdf5
+```
 
-# Step 2: Set up virtual environment and install packages
+Restart your terminal and check the Rust version:
+
+```bash
+rustup --version
+```
+
+#### Step 2: Set up the virtual environment and install dependencies
+
+For `PowerShell` CLI:
+
+```powershell
+pyenv local 3.11.3
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+For `Git-bash` CLI:
+
+```bash
 pyenv local 3.11.3
 python -m venv .venv
 source .venv/Scripts/activate
-pip install --upgrade pip
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
 ## Configuration
 
-No specific configuration is required for this project.
+No specific configuration files or environment variables are required for this repository.
 
 ## Quick Start
 
 To get started, follow these steps:
 
 1. Fork the repository.
-2. Clone your forked repository to your local machine.
-3. Set up a virtual environment and install dependencies as described in the [Installation](#installation) section.
-4. Open the Jupyter notebooks in the order specified in the [README.md](README.md).
+2. Clone your fork to your local machine.
+3. Set up a virtual environment as described in the installation section.
+4. Open the Jupyter Notebooks in the order specified in the README.
 
 ## Usage
 
-Run the Jupyter notebooks to explore each topic:
-
-- **1_Spam_Classifier.ipynb**: Basic text processing and spam classification model training.
-- **2_Spam_Zero_Shot.ipynb**: Zero-shot learning for spam prediction using pre-trained models.
-- **3_Transformers_Zero_Shot_Pipeline.ipynb**: Exploring transformer-based models for various NLP tasks.
-- **4_create_embeddings.ipynb**: Creating embeddings for neural network models.
+Each notebook provides detailed instructions and examples on how to use the tools and techniques covered in that tutorial. You can run each cell individually or execute the entire notebook to see the results.
 
 ## Project Structure
 
@@ -179,31 +190,42 @@ ds-intro-to-NLP/
 ├── logs/
 │   ├── train/
 │   │   ├── events.out.tfevents.1768233138.LEGION.311212.0.v2
-│   │   ├── ...
-│   │   └── events.out.tfevents.1768236349.LEGION.311212.18.v2
+│   │   ├── events.out.tfevents.1768233176.LEGION.311212.1.v2
+│   │   ├── events.out.tfevents.1768233210.LEGION.311212.2.v2
+│   │   ├── events.out.tfevents.1768233246.LEGION.311212.3.v2
+│   │   ├── events.out.tfevents.1768235575.LEGION.311212.5.v2
+│   │   ├── events.out.tfevents.1768235769.LEGION.311212.7.v2
+│   │   ├── events.out.tfevents.1768235859.LEGION.311212.9.v2
+│   │   ├── events.out.tfevents.1768235897.LEGION.311212.11.v2
+│   │   ├── events.out.tfevents.1768235999.LEGION.311212.13.v2
+│   │   ├── events.out.tfevents.1768236281.LEGION.311212.15.v2
+│   │   ├── events.out.tfevents.1768236305.LEGION.311212.16.v2
+│   │   └── events.out.tfevents.1768236347.LEGION.311212.17.v2
 │   └── validation/
 │       ├── events.out.tfevents.1768233248.LEGION.311212.4.v2
-│       ├── ...
+│       ├── events.out.tfevents.1768235577.LEGION.311212.6.v2
+│       ├── events.out.tfevents.1768235772.LEGION.311212.8.v2
+│       ├── events.out.tfevents.1768235860.LEGION.311212.10.v2
+│       ├── events.out.tfevents.1768235899.LEGION.311212.12.v2
+│       ├── events.out.tfevents.1768236001.LEGION.311212.14.v2
 │       └── events.out.tfevents.1768236349.LEGION.311212.18.v2
 ├── metadata.tsv
-├── requirements.txt
-├── requirements_silicon.txt
-└── vectors.tsv
+└── requirements.txt
 ```
 
 ## Development
 
-This project is open-source and contributions are welcome. If you find any issues or have suggestions for improvements, please submit a pull request.
+The repository includes workflows for continuous integration and delivery, as well as scripts for managing issues and pull requests.
 
 ## Testing
 
-No tests are included in this repository.
+No specific tests are included in this repository.
 
 ## Limitations
 
-- The project assumes basic knowledge of Python and machine learning.
-- Some notebooks may require additional setup depending on your environment.
+- The tutorials assume a basic understanding of Python and machine learning concepts.
+- Some notebooks may require additional setup or dependencies not listed here.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
